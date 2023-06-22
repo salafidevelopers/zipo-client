@@ -11,7 +11,7 @@ import {
   PopoverTrigger,
   Text,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 // Functions
 export const handleLinkCopy = (toast, link) => {

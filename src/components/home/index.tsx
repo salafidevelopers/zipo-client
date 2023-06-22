@@ -1,10 +1,15 @@
 import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
-import { Box, Heading, Link, Text, VStack } from "@chakra-ui/react";
+import { Box, Container, Heading, Link, Text, VStack } from "@chakra-ui/react";
+import {
+  LinkIcon,
+  AtSignIcon,
+  LockIcon,
+  ExternalLinkIcon,
+  ViewIcon,
+} from "@chakra-ui/icons";
 import Image from "next/image";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
-import { Tooltip } from "recharts";
 
 import Footer from "../Footer";
 import { SHORTEN_LINK } from "../gql";
@@ -12,6 +17,9 @@ import HeadComponent from "../Head";
 import Header from "../Header";
 import Wrapper from "../Wrapper";
 import { ContentOne, ContentTwo } from "./contents";
+import FeaturesCard from "./FeaturesCard";
+import FeatureList from "./FeatureList";
+import FaqSection from "./FaqSection";
 
 const getAlternators = () => {
   return [];
@@ -33,7 +41,7 @@ function HomePage() {
       <Header fixed={false} isAuthenticated={false} />
       <Wrapper>
         <Box display={"flex"} justifyContent="center" alignItems={"center"}>
-          <Box w={{ base: "full", md: "50vw" }} p={4}>
+          <Box w={{ base: "full", md: "50vw" }} p-4>
             <VStack spacing={2}>
               <Heading
                 textAlign={"center"}
@@ -79,14 +87,14 @@ function HomePage() {
                 shortenLink={shortenLink}
               />
             )}
-
-            <Box w="full" h="200px" position={"relative"}>
+            <Box w="full" h="150px" position={"relative"}>
               <Image fill alt="Homepage pattern" src="/Homepage_Pattern.svg" />
             </Box>
           </Box>
         </Box>
       </Wrapper>
-
+      <FeatureList />
+      <FaqSection />
       <Footer />
     </Box>
   );
