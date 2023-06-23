@@ -54,4 +54,4 @@ This project is all right reserved by Zipo [License](LICENSE).
 
 If you have any questions, suggestions, or feedback, feel free to reach out to our team at support@zipo.me. We'd love to hear from you!
 
-Visit our website: [https://www.zipo.me](https://www.zipo.me)
+Visit our website: [https://zipo.me](https://zipo.me)
