@@ -47,7 +47,7 @@ const FaqSection = () => {
   return (
     <Box pt="6">
       <Wrapper>
-        <Box>
+        <Box mb={6}>
           <Heading
             w="fit-content"
             mx="auto"
@@ -56,7 +56,7 @@ const FaqSection = () => {
             textAlign="center"
             lineHeight={1.4}
             position={"relative"}
-            mb={4}
+            mb={3}
           >
             Frequenty Asked Questions
             <Image
