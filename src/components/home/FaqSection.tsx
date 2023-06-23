@@ -9,8 +9,11 @@ import {
   Image,
   Container,
   Text,
+  Stack,
+  Button,
 } from "@chakra-ui/react";
 import Wrapper from "../Wrapper";
+import Link from "next/link";
 
 const faqs = [
   {
@@ -42,9 +45,9 @@ const faqs = [
 
 const FaqSection = () => {
   return (
-    <Box py="6">
+    <Box pt="6">
       <Wrapper>
-        <Wrapper>
+        <Box>
           <Heading
             w="fit-content"
             mx="auto"
@@ -69,7 +72,7 @@ const FaqSection = () => {
               FAQs - We Have Answers!
             </Text>
           </Container>
-        </Wrapper>
+        </Box>
         <Container maxW="container.lg">
           <Accordion allowToggle>
             {faqs.map(({ answer, question }) => (
@@ -95,6 +98,45 @@ const FaqSection = () => {
           </Accordion>
         </Container>
       </Wrapper>
+      <Stack
+        direction={"column"}
+        align="center"
+        justifyContent="center"
+        paddingY="auto"
+        bgColor="#313EF70F"
+        py={4}
+        h="200px"
+      >
+        <Link href="/login">
+          <Button
+            width="fit-content"
+            variant="outline"
+            color={"white"}
+            backgroundColor={"zipo.500"}
+            fontFamily={"montserrat"}
+            _hover={{
+              bgColor: "zipo.500",
+              borderColor: "zipo.500",
+              color: "white",
+            }}
+          >
+            Get Started
+          </Button>
+        </Link>
+        <Link href="/login">
+          <Button
+            width="fit-content"
+            color={"zipo.500"}
+            variant="link"
+            fontFamily={"montserrat"}
+            _hover={{
+              color: "zipo.deep",
+            }}
+          >
+            Login
+          </Button>
+        </Link>
+      </Stack>
     </Box>
   );
 };

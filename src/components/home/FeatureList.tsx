@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Container, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  HStack,
+  Heading,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import {
   LinkIcon,
   AtSignIcon,
@@ -10,6 +18,7 @@ import {
 import Image from "next/image";
 import FeaturesCard from "./FeaturesCard";
 import Wrapper from "../Wrapper";
+import Link from "next/link";
 
 const featureData = [
   {
@@ -87,6 +96,39 @@ const FeatureList = () => {
             />
           ))}
         </Box>
+        <Stack my={4} direction={"column"} align="center">
+          <Link href="/login">
+            <Button
+              width="fit-content"
+              variant="outline"
+              color={"white"}
+              backgroundColor={"zipo.500"}
+              fontFamily={"montserrat"}
+              _hover={{
+                bgColor: "zipo.500",
+                borderColor: "zipo.500",
+                color: "white",
+              }}
+            >
+              Get Started
+            </Button>
+          </Link>
+          <Link href="/login">
+            <Button
+              width="fit-content"
+              variant="link"
+              color={"zipo.500"}
+              fontFamily={"montserrat"}
+              _hover={{
+                bgColor: "zipo.500",
+                borderColor: "zipo.500",
+                color: "white",
+              }}
+            >
+              Login
+            </Button>
+          </Link>
+        </Stack>
       </Container>
     </Box>
   );
