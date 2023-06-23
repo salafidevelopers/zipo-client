@@ -107,7 +107,7 @@ const FaqSection = () => {
         py={4}
         h="200px"
       >
-        <Link href="/login">
+        <Link href="/signup">
           <Button
             width="fit-content"
             variant="outline"

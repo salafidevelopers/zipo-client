@@ -97,7 +97,7 @@ const FeatureList = () => {
           ))}
         </Box>
         <Stack my={4} direction={"column"} align="center">
-          <Link href="/login">
+          <Link href="/signup">
             <Button
               width="fit-content"
               variant="outline"
