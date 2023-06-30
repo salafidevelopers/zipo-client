@@ -11,13 +11,7 @@ const config: DefaultSeoProps = {
       "Experience the convenience and power of Zipo today! Simplify your links, enhance your brand, and track your success. Sign up now and take control of your URLs like never before.",
     images: [
       {
-        url: "../public/og-img.jpg",
-        width: 800,
-        height: 600,
-        alt: "Og Image Alt",
-      },
-      {
-        url: "./og-img.jpg",
+        url: "/og-img.jpg",
         width: 800,
         height: 600,
         alt: "Og Image Alt",
