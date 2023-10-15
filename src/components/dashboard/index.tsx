@@ -2,14 +2,8 @@ import { AddIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
-  Checkbox,
-  Heading,
   HStack,
   IconButton,
-  Input,
-  InputGroup,
-  InputRightAddon,
-  InputRightElement,
   Text,
   useMediaQuery,
   useToast,
@@ -19,11 +13,6 @@ import {
   Divider,
   Modal,
   ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
   useDisclosure,
   Spinner,
 } from '@chakra-ui/react';
@@ -196,7 +185,7 @@ function Main() {
       {!editMode && (
         <LinkHandlerModal onClose={onClose} onOpen={onOpen} isOpen={isOpen} />
       )}
-      <Footer />
+      {/* <Footer /> */}
     </VStack>
   );
 }
@@ -277,6 +266,7 @@ const Links = ({ links, setLinkToEdit, setEditMode, onOpen }) => {
                   fontSize='12px'
                   iconSpacing={'3px'}
                   textDecoration='none'
+                  disabled
                 >
                   View Stat
                 </Button>

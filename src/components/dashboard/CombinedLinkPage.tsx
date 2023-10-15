@@ -2,8 +2,6 @@ import { Box, Heading, HStack, Text, VStack } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import Footer from '../Footer';
-import Header from '../Header';
 import RawHeader from '../RawHeader';
 import { socialLinks } from './utils';
 
@@ -51,7 +49,6 @@ function CombinedLinkPage({ link }) {
           here
         </Link>
       </Text>
-      <Footer />
     </VStack>
   );
 }

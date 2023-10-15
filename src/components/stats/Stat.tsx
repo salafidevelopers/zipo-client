@@ -158,7 +158,7 @@ function StatPage() {
         </Box>
       </Wrapper>
 
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   );
 }
