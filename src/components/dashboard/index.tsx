@@ -41,9 +41,6 @@ function Main() {
   const [mediumScreenAbove] = useMediaQuery('(min-width: 768px)');
   const { data, error, loading } = useQuery(GET_LINKS);
 
-  if (data) {
-    console.log(data);
-  }
 
   if (error) {
     console.log(error);

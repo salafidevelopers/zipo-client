@@ -46,6 +46,13 @@ function Main() {
 
   const [login, { data, loading, error, reset }] = useMutation(LOGIN, {
     variables: { email, password },
+    onCompleted: (data) => {
+      setAuthenticating(false);
+      const { token, data: user } = data.auth_login;
+      saveToken(token);
+      saveUser(user);
+      router.push(`/dashboard`);
+    },
   });
 
   const router = useRouter();
@@ -59,14 +66,6 @@ function Main() {
     }
   }, []);
 
-  if (data) {
-    setAuthenticating(false);
-    const { token, data: user } = data.auth_login;
-    saveToken(token);
-    saveUser(user);
-    router.push(`/dashboard`);
-  }
-
   if (error) {
     toast({
       id: Math.round(Math.random() * 30),
@@ -78,7 +77,6 @@ function Main() {
     });
     reset();
     setAuthenticating(false);
-
   }
   return (
     <Box h='100vh' w='100vw'>
