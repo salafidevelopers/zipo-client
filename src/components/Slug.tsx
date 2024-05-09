@@ -28,9 +28,12 @@ function getPath(route: string) {
 
 function Slug() {
   const router = useRouter();
+  const { slug, asPath } = router.query;
   const { loading, data, error } = useQuery(GET_ORIGINAL_LINK, {
     variables: { path: getPath(router.asPath) },
   });
+
+  console.log({ slug, asPath });
 
   if (loading) {
     return <></>;
