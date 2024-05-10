@@ -42,7 +42,7 @@ function Slug() {
   if (data) {
     if (data.getOriginalLink.type === "Shortened") {
       const link = data.getOriginalLink.link;
-      window.location.replace(link);
+      router.replace(link);
     } else {
       console.log(data);
       return <CombinedLinkPage link={data.getOriginalLink} />;
