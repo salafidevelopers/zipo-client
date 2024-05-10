@@ -52,6 +52,6 @@ This project is all right reserved by Zipo [License](LICENSE).
 
 ## Contact
 
-If you have any questions, suggestions, or feedback, feel free to reach out to our team at support@zipo.me. We'd love to hear from you!
+If you have any questions, suggestions, or feedback, feel free to reach out to our team at support@zipo.netlify.app. We'd love to hear from you!
 
-Visit our website: [https://zipo.me](https://zipo.me)
+Visit our website: [https://zipo.netlify.app](https://zipo.netlify.app)

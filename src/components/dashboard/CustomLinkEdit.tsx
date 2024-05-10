@@ -1,4 +1,4 @@
-import { useMutation } from '@apollo/client';
+import { useMutation } from "@apollo/client";
 import {
   ModalContent,
   ModalHeader,
@@ -11,17 +11,17 @@ import {
   InputGroup,
   InputRightElement,
   useToast,
-} from '@chakra-ui/react';
-import React from 'react';
+} from "@chakra-ui/react";
+import React from "react";
 
-import { GET_LINKS, EDIT_CUSTOM_LINK } from './gql';
+import { GET_LINKS, EDIT_CUSTOM_LINK } from "./gql";
 
 const inputProps = {
-  variant: 'outline',
+  variant: "outline",
   h: 12,
   borderRadius: 100,
-  borderColor: 'zipo.deep',
-  fontSize: '13px',
+  borderColor: "zipo.deep",
+  fontSize: "13px",
 };
 
 export default function CustomLinkEdit({
@@ -46,10 +46,10 @@ export default function CustomLinkEdit({
 
   if (error) {
     toast({
-      id: '123',
-      title: 'Failed',
+      id: "123",
+      title: "Failed",
       description: error.message,
-      status: 'error',
+      status: "error",
       duration: 5000,
       isClosable: true,
     });
@@ -58,9 +58,9 @@ export default function CustomLinkEdit({
 
   if (data) {
     toast({
-      id: '123',
-      title: 'Link Edited',
-      status: 'success',
+      id: "123",
+      title: "Link Edited",
+      status: "success",
       duration: 3000,
       isClosable: true,
     });
@@ -77,15 +77,15 @@ export default function CustomLinkEdit({
   return (
     <ModalContent
       p={{ base: 2, md: 8 }}
-      rounded={'3xl'}
-      w={{ base: '90%' }}
-      top={{ base: '4rem', md: 'auto' }}
+      rounded={"3xl"}
+      w={{ base: "90%" }}
+      top={{ base: "4rem", md: "auto" }}
     >
       <ModalHeader>Custom Link</ModalHeader>
-      <ModalBody ref={finalRef} as={VStack} spacing={7} w='full'>
+      <ModalBody ref={finalRef} as={VStack} spacing={7} w="full">
         <InputGroup>
           <Input
-            placeholder='https://www.'
+            placeholder="https://www."
             onChange={handleLongUrl}
             isDisabled={data}
             value={longUrl}
@@ -97,7 +97,7 @@ export default function CustomLinkEdit({
           {/* Custom Link  */}
           <InputGroup>
             <Input
-              value={'zipo.me/' + link.path}
+              value={"zipo.netlify.app/" + link.path}
               readOnly
               isDisabled
               {...inputProps}
@@ -107,14 +107,14 @@ export default function CustomLinkEdit({
 
           {/* Edit Button  */}
           <Button
-            width='full'
-            variant='solid'
-            bgColor={'zipo.500'}
-            fontSize='14px'
+            width="full"
+            variant="solid"
+            bgColor={"zipo.500"}
+            fontSize="14px"
             fontWeight={500}
-            color={'white'}
-            rounded='3xl'
-            fontFamily={'montserrat'}
+            color={"white"}
+            rounded="3xl"
+            fontFamily={"montserrat"}
             h={12}
             _hover={{
               opacity: 0.9,
@@ -124,10 +124,10 @@ export default function CustomLinkEdit({
             onClick={() => {
               if (longUrl.length < 3) {
                 toast({
-                  id: '123',
-                  title: 'Too short',
-                  description: 'Link is too short',
-                  status: 'error',
+                  id: "123",
+                  title: "Too short",
+                  description: "Link is too short",
+                  status: "error",
                   duration: 3000,
                   isClosable: true,
                 });
@@ -141,16 +141,16 @@ export default function CustomLinkEdit({
         </>
       </ModalBody>
 
-      <ModalFooter justifyContent={'flex-start'}>
+      <ModalFooter justifyContent={"flex-start"}>
         <Button
-          variant={'primary'}
-          rounded='3xl'
-          color='white'
-          fontSize={'13px'}
+          variant={"primary"}
+          rounded="3xl"
+          color="white"
+          fontSize={"13px"}
           fontWeight={500}
           px={6}
           py={5}
-          bg='zipo.500'
+          bg="zipo.500"
           onClick={() => {
             setLinkToEdit({});
             setEditMode(false);

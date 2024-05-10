@@ -74,7 +74,7 @@ export const ContentTwo = ({ reset, setLongLink, alternators, path }) => {
   const toast = useToast();
   const [suggestion, setSuggestion] = useState(true);
   const isSuggestionShowing = alternators.length > 0 && suggestion === true;
-  const link = "zipo.me/" + path;
+  const link = "zipo.netlify.app/" + path;
 
   console.log(alternators);
   return (

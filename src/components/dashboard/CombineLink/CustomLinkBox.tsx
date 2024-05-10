@@ -20,8 +20,8 @@ const CustomLinkBox = ({
 
   const handleCustomLink = (value) => {
     setCustomizeReady(false);
-    // Make sure zipo.me/ preceeds any input by the user
-    if (value.length >= 8 && value.startsWith("zipo.me/")) {
+    // Make sure zipo.netlify.app/ preceeds any input by the user
+    if (value.length >= 8 && value.startsWith("zipo.netlify.app/")) {
       setCustomLink(value);
 
       // Make sure that only links above 10 characters are sorted for
@@ -41,7 +41,7 @@ const CustomLinkBox = ({
   return (
     <InputGroup w="full">
       <Input
-        placeholder="zipo.me/CustomLink"
+        placeholder="zipo.netlify.app/CustomLink"
         onChange={(e) => {
           handleCustomLink(e.target.value);
         }}

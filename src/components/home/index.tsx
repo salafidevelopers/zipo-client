@@ -41,7 +41,7 @@ function HomePage() {
       <Header fixed={false} isAuthenticated={false} />
       <Wrapper>
         <Box display={"flex"} justifyContent="center" alignItems={"center"}>
-          <Box w={{ base: "full", md: "50vw" }} p-4>
+          <Box w={{ base: "full", md: "50vw" }}>
             <VStack spacing={2}>
               <Heading
                 textAlign={"center"}

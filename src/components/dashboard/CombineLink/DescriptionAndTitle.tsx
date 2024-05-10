@@ -59,7 +59,7 @@ const DescriptionAndTitle = ({
         <Box w="95%">
           <InputGroup>
             <Input
-              placeholder="zipo.me/CustomLink"
+              placeholder="zipo.netlify.app/CustomLink"
               readOnly
               value={customLink}
               {...inputProps2}

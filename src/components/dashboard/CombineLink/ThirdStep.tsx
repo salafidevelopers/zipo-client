@@ -119,7 +119,7 @@ const ThirdStep = ({
               setLinkTitle("");
               setDescription("");
               setInitLinks(initialLinks);
-              setCustomLink("zipo.me/");
+              setCustomLink("zipo.netlify.app/");
               setModalType("create_link");
             }}
           >

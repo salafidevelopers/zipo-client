@@ -1,11 +1,9 @@
-import { useLazyQuery, useMutation } from '@apollo/client';
-import { AddIcon, CheckIcon } from '@chakra-ui/icons';
+import { useLazyQuery, useMutation } from "@apollo/client";
 import {
   ModalContent,
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
   HStack,
   VStack,
   Image,
@@ -17,22 +15,22 @@ import {
   Box,
   useToast,
   Spinner,
-} from '@chakra-ui/react';
-import React from 'react';
+} from "@chakra-ui/react";
+import React from "react";
 import {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-} from 'react-share';
-import { GET_LINKS, IS_LINK_CUSTOMIZABLE, SHORTEN_LINK_CUSTOM } from './gql';
+} from "react-share";
+import { GET_LINKS, IS_LINK_CUSTOMIZABLE, SHORTEN_LINK_CUSTOM } from "./gql";
 
 const inputProps = {
-  variant: 'outline',
+  variant: "outline",
   h: 12,
   borderRadius: 100,
-  borderColor: 'zipo.deep',
-  fontSize: '13px',
+  borderColor: "zipo.deep",
+  fontSize: "13px",
 };
 
 export default function CustomLink({
@@ -41,9 +39,9 @@ export default function CustomLink({
   onClose,
   setModalType,
 }) {
-  const [shortenedLink, setShortenedLink] = React.useState('');
-  const [customLink, setCustomLink] = React.useState('zipo.me/');
-  const [longUrl, setLongUrl] = React.useState('');
+  const [shortenedLink, setShortenedLink] = React.useState("");
+  const [customLink, setCustomLink] = React.useState("zipo.netlify.app/");
+  const [longUrl, setLongUrl] = React.useState("");
   const [customizeReady, setCustomizeReady] = React.useState(false);
   const toast = useToast();
 
@@ -58,10 +56,10 @@ export default function CustomLink({
 
   if (error) {
     toast({
-      id: '123',
-      title: 'Failed',
+      id: "123",
+      title: "Failed",
       description: error.message,
-      status: 'error',
+      status: "error",
       duration: 5000,
       isClosable: true,
     });
@@ -75,15 +73,15 @@ export default function CustomLink({
   return (
     <ModalContent
       p={{ base: 2, md: 8 }}
-      rounded={'3xl'}
-      w={{ base: '90%' }}
-      top={{ base: '4rem', md: 'auto' }}
+      rounded={"3xl"}
+      w={{ base: "90%" }}
+      top={{ base: "4rem", md: "auto" }}
     >
       <ModalHeader>Custom Link</ModalHeader>
-      <ModalBody ref={finalRef} as={VStack} spacing={7} w='full'>
+      <ModalBody ref={finalRef} as={VStack} spacing={7} w="full">
         <InputGroup>
           <Input
-            placeholder='https://www.'
+            placeholder="https://www."
             onChange={handleLongUrl}
             isDisabled={data}
             value={longUrl}
@@ -99,14 +97,14 @@ export default function CustomLink({
               setCustomizeReady={setCustomizeReady}
             />
             <Button
-              width='full'
-              variant='solid'
-              bgColor={'zipo.500'}
-              fontSize='14px'
+              width="full"
+              variant="solid"
+              bgColor={"zipo.500"}
+              fontSize="14px"
               fontWeight={500}
-              color={'white'}
-              rounded='3xl'
-              fontFamily={'montserrat'}
+              color={"white"}
+              rounded="3xl"
+              fontFamily={"montserrat"}
               h={12}
               _hover={{
                 opacity: 0.9,
@@ -116,10 +114,10 @@ export default function CustomLink({
               onClick={() => {
                 if (longUrl.length < 3) {
                   toast({
-                    id: '123',
-                    title: 'Too short',
-                    description: 'Link is too short',
-                    status: 'error',
+                    id: "123",
+                    title: "Too short",
+                    description: "Link is too short",
+                    status: "error",
                     duration: 3000,
                     isClosable: true,
                   });
@@ -133,7 +131,7 @@ export default function CustomLink({
           </>
         ) : (
           <ContentTwo
-            link={'zipo.me/' + data.link_shortenCustom.data.path}
+            link={"zipo.netlify.app/" + data.link_shortenCustom.data.path}
             reset={reset}
             setLongUrl={setLongUrl}
             setCustomLink={setCustomLink}
@@ -141,45 +139,45 @@ export default function CustomLink({
         )}
       </ModalBody>
 
-      <ModalFooter justifyContent={'flex-start'}>
+      <ModalFooter justifyContent={"flex-start"}>
         {!shortenedLink ? (
           <Button
-            variant={'outline'}
-            rounded='3xl'
-            color='zipo.black'
-            fontSize={'13px'}
+            variant={"outline"}
+            rounded="3xl"
+            color="zipo.black"
+            fontSize={"13px"}
             fontWeight={500}
             px={6}
             py={5}
             _focus={{
-              bg: 'zipo.200',
-              color: 'white',
-              borderColor: 'zipo.200',
+              bg: "zipo.200",
+              color: "white",
+              borderColor: "zipo.200",
             }}
             _hover={{
-              bg: 'zipo.500',
-              color: 'white',
-              borderColor: 'zipo.500',
+              bg: "zipo.500",
+              color: "white",
+              borderColor: "zipo.500",
             }}
-            borderColor={'zipo.black'}
+            borderColor={"zipo.black"}
             onClick={() => {
-              setModalType('create_link');
+              setModalType("create_link");
             }}
           >
             Back
           </Button>
         ) : (
           <Button
-            variant={'primary'}
-            rounded='3xl'
-            color='white'
-            fontSize={'13px'}
+            variant={"primary"}
+            rounded="3xl"
+            color="white"
+            fontSize={"13px"}
             fontWeight={500}
             px={6}
             py={5}
-            bg='zipo.500'
+            bg="zipo.500"
             onClick={() => {
-              setModalType('create_link');
+              setModalType("create_link");
               onClose();
             }}
           >
@@ -202,8 +200,8 @@ const CustomLinkBox = ({
 
   const handleCustomLink = (value) => {
     setCustomizeReady(false);
-    // Make sure zipo.me/ preceeds any input by the user
-    if (value.length >= 8 && value.startsWith('zipo.me/')) {
+    // Make sure zipo.netlify.app/ preceeds any input by the user
+    if (value.length >= 8 && value.startsWith("zipo.netlify.app/")) {
       setCustomLink(value);
 
       // Make sure that only links above 10 characters are sorted for
@@ -215,7 +213,7 @@ const CustomLinkBox = ({
               setCustomizeReady(true);
             }
           },
-          fetchPolicy: 'network-only',
+          fetchPolicy: "network-only",
         });
       }
     }
@@ -223,7 +221,7 @@ const CustomLinkBox = ({
   return (
     <InputGroup>
       <Input
-        placeholder='zipo.me/CustomLink'
+        placeholder="zipo.netlify.app/CustomLink"
         onChange={(e) => {
           handleCustomLink(e.target.value);
         }}
@@ -233,11 +231,11 @@ const CustomLinkBox = ({
       <InputRightElement
         children={
           loading ? (
-            <Spinner size='xs' />
+            <Spinner size="xs" />
           ) : customizeReady ? (
-            <Image src='Link_Correct.svg' />
+            <Image src="Link_Correct.svg" />
           ) : (
-            <Image src='Link_Wrong.svg' />
+            <Image src="Link_Wrong.svg" />
           )
         }
       />
@@ -251,34 +249,34 @@ const ContentTwo = ({ link, reset, setLongUrl, setCustomLink }) => {
     <>
       <Text
         mt={4}
-        w={'full'}
-        textAlign='center'
-        color='red.500'
-        textDecoration={'underline'}
-        cursor='pointer'
+        w={"full"}
+        textAlign="center"
+        color="red.500"
+        textDecoration={"underline"}
+        cursor="pointer"
         onClick={() => {
           reset();
-          setLongUrl('');
-          setCustomLink('zipo.me/');
+          setLongUrl("");
+          setCustomLink("zipo.netlify.app/");
         }}
       >
         Reset
       </Text>
-      <InputGroup size='sm' mt={2}>
+      <InputGroup size="sm" mt={2}>
         <Input
-          variant={'outline'}
+          variant={"outline"}
           value={link}
           h={12}
           borderRadius={100}
-          borderColor='zipo.deep'
+          borderColor="zipo.deep"
           fontWeight={500}
           readOnly
         />
-        <InputRightElement width='4.5rem'>
+        <InputRightElement width="4.5rem">
           <Button
-            variant={'text'}
-            size='sm'
-            color={'zipo.500'}
+            variant={"text"}
+            size="sm"
+            color={"zipo.500"}
             top={1.5}
             right={1}
             fontWeight={500}
@@ -292,37 +290,37 @@ const ContentTwo = ({ link, reset, setLongUrl, setCustomLink }) => {
       </InputGroup>
 
       <HStack
-        flexWrap={'wrap'}
+        flexWrap={"wrap"}
         mt={1}
-        justifyContent={{ base: 'center', md: 'flex-end' }}
+        justifyContent={{ base: "center", md: "flex-end" }}
       >
         <HStack spacing={3}>
-          <img src='Share_Black.svg' style={{ display: 'inline' }} width={20} />
+          <img src="Share_Black.svg" style={{ display: "inline" }} width={20} />
           <Text mr={2}>Share link. </Text>
         </HStack>
 
         <Box pt={{ base: 2, md: 0 }}>
           <WhatsappShareButton
             url={link}
-            children={<ShareIcon src='Whatsapp_Black.svg' />}
+            children={<ShareIcon src="Whatsapp_Black.svg" />}
           />
           <FacebookShareButton
             url={link}
-            children={<ShareIcon src='Facebook_Black.svg' />}
+            children={<ShareIcon src="Facebook_Black.svg" />}
           />
           <LinkedinShareButton
             url={link}
-            children={<ShareIcon src='Linkedin_Black.svg' />}
+            children={<ShareIcon src="Linkedin_Black.svg" />}
           />
           <TwitterShareButton
             url={link}
-            children={<ShareIcon src='Twitter_Black.svg' />}
+            children={<ShareIcon src="Twitter_Black.svg" />}
           />
           <img
             width={29}
-            style={{ marginLeft: '5px', display: 'inline', cursor: 'pointer' }}
-            alt='share'
-            src='Copylink_Black.svg'
+            style={{ marginLeft: "5px", display: "inline", cursor: "pointer" }}
+            alt="share"
+            src="Copylink_Black.svg"
             onClick={() => {
               handleLinkCopy(toast, link);
             }}
@@ -338,8 +336,8 @@ const ShareIcon = ({ src }) => {
     <img
       src={src}
       width={29}
-      style={{ marginLeft: '5px', display: 'inline' }}
-      alt='share'
+      style={{ marginLeft: "5px", display: "inline" }}
+      alt="share"
     />
   );
 };
@@ -350,9 +348,9 @@ const handleLinkCopy = (toast, link) => {
   if (!toast.isActive(link)) {
     toast({
       id: link,
-      title: 'Link copied',
+      title: "Link copied",
       description: link,
-      status: 'success',
+      status: "success",
       duration: 3000,
       isClosable: true,
     });

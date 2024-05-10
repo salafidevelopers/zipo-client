@@ -22,7 +22,6 @@ import React, { useState } from "react";
 import HeadComponent from "../Head";
 import Header from "../Header";
 import Wrapper from "../Wrapper";
-import CombineLink from "./CombineLink";
 import CustomLink from "./CustomLink";
 import CreateLink from "./CreateLink";
 import PrivateRoute from "../PrivateRoute";
@@ -30,6 +29,7 @@ import { GET_LINKS } from "./gql";
 import { useQuery } from "@apollo/client";
 import CustomLinkEdit from "./CustomLinkEdit";
 import CombineLinkEdit from "./CombineLinkEdit";
+import CombineLink from "./CombineLink";
 
 function Main() {
   const [editMode, setEditMode] = useState(false);

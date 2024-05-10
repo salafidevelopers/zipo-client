@@ -4,7 +4,7 @@ const config: DefaultSeoProps = {
   openGraph: {
     type: "website",
     locale: "en_IE",
-    url: "https://zipo.me",
+    url: "https://zipo.netlify.app",
     siteName: "Zipo",
     title: "Zipo - Shorten, Simplify, and Optimize Your URLs",
     description:
