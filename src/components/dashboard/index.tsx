@@ -17,9 +17,8 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import Footer from "../Footer";
 import HeadComponent from "../Head";
 import Header from "../Header";
 import Wrapper from "../Wrapper";
