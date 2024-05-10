@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { HStack, Text } from "@chakra-ui/react";
@@ -28,23 +28,23 @@ function SlugPage() {
   const router = useRouter();
   const { provider, slug } = router.query;
 
+  // const { loading, data, error } = useQuery(GET_ORIGINAL_LINK, {
+  //   variables: { path: provider + "/" + slug }, // Construct your query path dynamically
+  //   skip: !slug, // Skip query until slug is available
+  // });
+
+  // Validate provider against the list of valid providers
+  useEffect(() => {
+    if (provider && !validProviders.includes(provider as string)) {
+      // Redirect to a 404 page or handle invalid provider scenario
+      router.push("/404"); // Redirect to a custom 404 page
+    }
+  }, [provider]);
+
   const { loading, data, error } = useQuery(GET_ORIGINAL_LINK, {
-    variables: { path: provider + "/" + slug }, // Construct your query path dynamically
-    skip: !slug, // Skip query until slug is available
+    variables: { path: `${provider}/${slug}` }, // Construct your query path dynamically
+    skip: !slug || !validProviders.includes(provider as string), // Skip query if slug or provider is invalid
   });
-
-  //    // Validate provider against the list of valid providers
-  //    useEffect(() => {
-  //     if (provider && !validProviders.includes(provider as string)) {
-  //       // Redirect to a 404 page or handle invalid provider scenario
-  //       router.push('/404'); // Redirect to a custom 404 page
-  //     }
-  //   }, [provider]);
-
-  //   const { loading, data, error } = useQuery(GET_ORIGINAL_LINK, {
-  //     variables: { path: `${provider}/${slug}` }, // Construct your query path dynamically
-  //     skip: !slug || !validProviders.includes(provider as string), // Skip query if slug or provider is invalid
-  //   });
 
   if (loading) {
     return <></>; // Consider using a loading indicator
