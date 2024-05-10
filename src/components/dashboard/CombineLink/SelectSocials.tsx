@@ -22,6 +22,7 @@ const SelectSocials = ({ title, id, handleLinkEdit }) => {
     <Menu>
       <MenuButton
         as={IconButton}
+        icon={<Image src={src} w="20px" />}
         // leftIcon={<Image src={src} w="20px" />}
         h={12}
         pr={4}
