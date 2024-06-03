@@ -64,7 +64,7 @@ const LinkCombined = ({
       <Box w="95%">
         <InputGroup>
           <Input
-            placeholder="zipo.netlify.app/CustomLink"
+            placeholder="zipo.me/CustomLink"
             readOnly
             value={customLink}
             {...inputProps2}

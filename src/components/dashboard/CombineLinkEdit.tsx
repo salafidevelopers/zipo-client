@@ -82,7 +82,7 @@ export default function CombineLinkEdit({
     })
   );
   const [step, setStep] = React.useState("step_1");
-  const [customLink, setCustomLink] = React.useState("zipo.netlify.app/");
+  const [customLink, setCustomLink] = React.useState("zipo.me/");
 
   const handleLinkDelete = (id) => {
     if (initLinks.length <= 2) {
@@ -484,7 +484,7 @@ const SecondStep = ({
                 setLinkTitle("");
                 setDescription("");
                 setInitLinks(initialLinks);
-                setCustomLink("zipo.netlify.app/");
+                setCustomLink("zipo.me/");
                 setLinkToEdit({});
                 setEditMode(false);
               }}
@@ -561,7 +561,7 @@ const LinkCombined = ({
       <Box w="95%">
         <InputGroup>
           <Input
-            placeholder="zipo.netlify.app/CustomLink"
+            placeholder="zipo.me/CustomLink"
             readOnly
             value={customLink}
             {...inputProps2}
@@ -685,10 +685,10 @@ const DescriptionAndTitle = ({
         <Box w="95%">
           <InputGroup>
             <Input
-              placeholder="zipo.netlify.app/CustomLink"
+              placeholder="zipo.me/CustomLink"
               readOnly
               isDisabled
-              value={"zipo.netlify.app/" + link.path}
+              value={"zipo.me/" + link.path}
               {...inputProps2}
             />
             <InputRightElement

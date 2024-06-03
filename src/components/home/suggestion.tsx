@@ -35,7 +35,7 @@ const Suggestion = ({
   path,
   toast,
 }) => {
-  const link = "zipo.netlify.app/" + alternators[0] + "/" + path;
+  const link = "zipo.me/" + alternators[0] + "/" + path;
 
   return (
     <Popover

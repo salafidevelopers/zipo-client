@@ -1,5 +1,5 @@
 _add suggestion functionality for link shortening_
-links look like zipo.netlify.app/_platform_/_path_
+links look like zipo.me/_platform_/_path_
 
 # step 1 **done**
 

@@ -221,9 +221,7 @@ const Links = ({ links, setLinkToEdit, setEditMode, onOpen }) => {
               {/* <a href={'https://zipo.me/' + link.path} target='_blank'> */}
               <Box
                 onClick={() => {
-                  navigator.clipboard.writeText(
-                    "https://zipo.netlify.app/" + link.path
-                  );
+                  navigator.clipboard.writeText("https://zipo.me/" + link.path);
                   toast({
                     id: link.path,
                     title: "Link copied",

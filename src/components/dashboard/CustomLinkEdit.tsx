@@ -97,7 +97,7 @@ export default function CustomLinkEdit({
           {/* Custom Link  */}
           <InputGroup>
             <Input
-              value={"zipo.netlify.app/" + link.path}
+              value={"zipo.me/" + link.path}
               readOnly
               isDisabled
               {...inputProps}

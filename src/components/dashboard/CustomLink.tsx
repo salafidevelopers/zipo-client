@@ -40,7 +40,7 @@ export default function CustomLink({
   setModalType,
 }) {
   const [shortenedLink, setShortenedLink] = React.useState("");
-  const [customLink, setCustomLink] = React.useState("zipo.netlify.app/");
+  const [customLink, setCustomLink] = React.useState("zipo.me/");
   const [longUrl, setLongUrl] = React.useState("");
   const [customizeReady, setCustomizeReady] = React.useState(false);
   const toast = useToast();
@@ -131,7 +131,7 @@ export default function CustomLink({
           </>
         ) : (
           <ContentTwo
-            link={"zipo.netlify.app/" + data.link_shortenCustom.data.path}
+            link={"zipo.me/" + data.link_shortenCustom.data.path}
             reset={reset}
             setLongUrl={setLongUrl}
             setCustomLink={setCustomLink}
@@ -200,8 +200,8 @@ const CustomLinkBox = ({
 
   const handleCustomLink = (value) => {
     setCustomizeReady(false);
-    // Make sure zipo.netlify.app/ preceeds any input by the user
-    if (value.length >= 8 && value.startsWith("zipo.netlify.app/")) {
+    // Make sure zipo.me/ preceeds any input by the user
+    if (value.length >= 8 && value.startsWith("zipo.me/")) {
       setCustomLink(value);
 
       // Make sure that only links above 10 characters are sorted for
@@ -221,7 +221,7 @@ const CustomLinkBox = ({
   return (
     <InputGroup>
       <Input
-        placeholder="zipo.netlify.app/CustomLink"
+        placeholder="zipo.me/CustomLink"
         onChange={(e) => {
           handleCustomLink(e.target.value);
         }}
@@ -257,7 +257,7 @@ const ContentTwo = ({ link, reset, setLongUrl, setCustomLink }) => {
         onClick={() => {
           reset();
           setLongUrl("");
-          setCustomLink("zipo.netlify.app/");
+          setCustomLink("zipo.me/");
         }}
       >
         Reset

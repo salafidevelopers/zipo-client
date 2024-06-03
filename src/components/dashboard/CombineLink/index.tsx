@@ -10,7 +10,7 @@ const CombineLink = ({ finalRef, initialRef, onClose, setModalType }) => {
   const toast = useToast();
   const [initLinks, setInitLinks] = React.useState(initialLinks);
   const [step, setStep] = React.useState("step_1");
-  const [customLink, setCustomLink] = React.useState("zipo.netlify.app/");
+  const [customLink, setCustomLink] = React.useState("zipo.me/");
 
   const handleLinkDelete = (id) => {
     if (initLinks.length <= 2) {
