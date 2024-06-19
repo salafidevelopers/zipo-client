@@ -249,7 +249,7 @@ const Links = ({ links, setLinkToEdit, setEditMode, onOpen }) => {
             </Text>
             <Divider color={"#22222230"} />
 
-            {/* <Box>
+            <Box>
               <Link href={`/stat/${link.id}`}>
                 <Button
                   leftIcon={<Image src="Stat_Icon.svg" w="20px" />}
@@ -264,7 +264,7 @@ const Links = ({ links, setLinkToEdit, setEditMode, onOpen }) => {
                   View Stat
                 </Button>
               </Link>
-            </Box> */}
+            </Box>
           </VStack>
         );
       })}
