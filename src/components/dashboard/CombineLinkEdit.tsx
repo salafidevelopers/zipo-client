@@ -1,4 +1,4 @@
-import { AddIcon, DeleteIcon, TriangleDownIcon } from "@chakra-ui/icons";
+import { AddIcon, DeleteIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import {
   ModalContent,
   ModalHeader,
@@ -21,46 +21,46 @@ import {
   useToast,
   Textarea,
   Spinner,
-} from "@chakra-ui/react";
-import React, { useState } from "react";
-import { socialLinks } from "./utils";
-import { randomCh } from "../../utils/misc";
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { socialLinks } from './utils';
+import { randomCh } from '../../utils/misc';
 import {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-} from "react-share";
+} from 'react-share';
 import {
   COMBINE_LINK,
   EDIT_COMBINE_LINK,
   GET_LINKS,
   IS_LINK_CUSTOMIZABLE,
-} from "./gql";
-import { useLazyQuery, useMutation } from "@apollo/client";
+} from './gql';
+import { useLazyQuery, useMutation } from '@apollo/client';
 
 const inputProps = {
-  variant: "outline",
+  variant: 'outline',
   h: 12,
   borderRightRadius: 100,
-  borderColor: "zipo.deep",
-  fontSize: "13px",
-  borderLeft: "none",
-  color: "#222222",
+  borderColor: 'zipo.deep',
+  fontSize: '13px',
+  borderLeft: 'none',
+  color: '#222222',
 };
 
 const inputProps2 = {
-  variant: "outline",
+  variant: 'outline',
   h: 12,
   borderRadius: 100,
-  borderColor: "zipo.deep",
-  fontSize: "13px",
-  color: "#222222",
+  borderColor: 'zipo.deep',
+  fontSize: '13px',
+  color: '#222222',
 };
 
 const initialLinks = [
-  { title: "facebook", id: randomCh(8), url: undefined },
-  { title: "twitter", id: randomCh(8), url: undefined },
+  { title: 'facebook', id: randomCh(8), url: undefined },
+  { title: 'twitter', id: randomCh(8), url: undefined },
 ];
 
 export default function CombineLinkEdit({
@@ -81,16 +81,16 @@ export default function CombineLinkEdit({
       };
     })
   );
-  const [step, setStep] = React.useState("step_1");
-  const [customLink, setCustomLink] = React.useState("zipo.me/");
+  const [step, setStep] = React.useState('step_1');
+  const [customLink, setCustomLink] = React.useState('zipo.me/');
 
   const handleLinkDelete = (id) => {
     if (initLinks.length <= 2) {
       toast({
-        id: "26480",
-        title: "Links cannot be less than 2",
-        description: "",
-        status: "error",
+        id: '26480',
+        title: 'Links cannot be less than 2',
+        description: '',
+        status: 'error',
         duration: 3000,
         isClosable: true,
       });
@@ -103,7 +103,7 @@ export default function CombineLinkEdit({
   const handleLinkAdd = () => {
     setInitLinks([
       ...initLinks,
-      { title: "others", id: randomCh(8), url: undefined },
+      { title: 'others', id: randomCh(8), url: undefined },
     ]);
   };
 
@@ -134,12 +134,12 @@ export default function CombineLinkEdit({
   return (
     <ModalContent
       p={{ base: 2, md: 8 }}
-      rounded={"3xl"}
-      w={{ base: "90%" }}
-      top={{ base: "4rem", md: "auto" }}
+      rounded={'3xl'}
+      w={{ base: '90%' }}
+      top={{ base: '4rem', md: 'auto' }}
     >
       <ModalHeader>Combine Links</ModalHeader>
-      {step === "step_1" ? (
+      {step === 'step_1' ? (
         <FirstStep
           toast={toast}
           finalRef={finalRef}
@@ -184,24 +184,24 @@ const SelectSocials = ({ title, id, handleLinkEdit }) => {
     <Menu>
       <MenuButton
         as={IconButton}
-        icon={<Image src={src} w="20px" />}
+        icon={<Image src={src} w='20px' />}
         // leftIcon={<Image src={src} w='20px' />}
         h={12}
         pr={4}
         pl={4}
         borderLeftRadius={100}
-        borderColor="#222222"
-        borderRightColor="#22222220"
-        variant="outline"
+        borderColor='#222222'
+        borderRightColor='#22222220'
+        variant='outline'
       >
-        <TriangleDownIcon color="#22222230" fontSize={"11px"} ml={1} />
+        <TriangleDownIcon color='#22222230' fontSize={'11px'} ml={1} />
       </MenuButton>
 
       <MenuList>
         {socialLinks.map((link) => {
           return (
             <MenuItem
-              icon={<Image src={link.src} w="20px" />}
+              icon={<Image src={link.src} w='20px' />}
               onClick={() => {
                 setSrc(getLinkSrc(link.title));
                 handleLinkEdit(link.title, id);
@@ -233,31 +233,31 @@ const FirstStep = ({
   const handleContinue = () => {
     if (initLinks.filter((link) => link.url !== undefined).length < 2) {
       toast({
-        id: "26480",
-        title: "Please add at least 2 links",
-        description: "",
-        status: "error",
+        id: '26480',
+        title: 'Please add at least 2 links',
+        description: '',
+        status: 'error',
         duration: 3000,
         isClosable: true,
       });
     } else {
-      setStep("step_2");
+      setStep('step_2');
     }
   };
   return (
     <>
-      <ModalBody ref={finalRef} as={VStack} spacing={7} w="full">
-        <VStack w="full" alignItems={"flex-start"}>
-          <Box pb={3} w="full">
+      <ModalBody ref={finalRef} as={VStack} spacing={7} w='full'>
+        <VStack w='full' alignItems={'flex-start'}>
+          <Box pb={3} w='full'>
             <VStack
-              w="full"
-              alignItems={"flex-start"}
-              maxH={"180px"}
-              overflowY="auto"
+              w='full'
+              alignItems={'flex-start'}
+              maxH={'180px'}
+              overflowY='auto'
             >
               {initLinks.map((link) => {
                 return (
-                  <HStack spacing={0} w="95%" key={link.id}>
+                  <HStack spacing={0} w='95%' key={link.id}>
                     <SelectSocials
                       key={link.id}
                       title={link.title}
@@ -266,7 +266,7 @@ const FirstStep = ({
                     />
                     <InputGroup>
                       <Input
-                        placeholder="Paste link here"
+                        placeholder='Paste link here'
                         value={link.url}
                         {...inputProps}
                         onChange={(e) => {
@@ -276,9 +276,9 @@ const FirstStep = ({
                       <InputRightElement
                         children={
                           <DeleteIcon
-                            fontSize={"13px"}
-                            cursor="pointer"
-                            _hover={{ color: "red.500" }}
+                            fontSize={'13px'}
+                            cursor='pointer'
+                            _hover={{ color: 'red.500' }}
                             onClick={() => handleLinkDelete(link.id)}
                           />
                         }
@@ -290,15 +290,15 @@ const FirstStep = ({
             </VStack>
           </Box>
           <Button
-            width="95%"
-            variant="outline"
-            fontSize="14px"
+            width='95%'
+            variant='outline'
+            fontSize='14px'
             fontWeight={400}
-            color={"zipo.deep"}
-            borderColor="#222222"
-            rounded="3xl"
-            fontFamily={"montserrat"}
-            rightIcon={<AddIcon fontSize={"10px"} />}
+            color={'zipo.deep'}
+            borderColor='#222222'
+            rounded='3xl'
+            fontFamily={'montserrat'}
+            rightIcon={<AddIcon fontSize={'10px'} />}
             h={12}
             _hover={{
               opacity: 0.9,
@@ -306,16 +306,16 @@ const FirstStep = ({
             onClick={() => handleLinkAdd()}
           >
             Add more links
-          </Button>{" "}
+          </Button>{' '}
           <Button
-            width="95%"
-            variant="solid"
-            bgColor={"zipo.500"}
-            fontSize="14px"
+            width='95%'
+            variant='solid'
+            bgColor={'zipo.500'}
+            fontSize='14px'
             fontWeight={500}
-            color={"white"}
-            rounded="3xl"
-            fontFamily={"montserrat"}
+            color={'white'}
+            rounded='3xl'
+            fontFamily={'montserrat'}
             h={12}
             _hover={{
               opacity: 0.9,
@@ -325,28 +325,28 @@ const FirstStep = ({
             }}
           >
             Continue
-          </Button>{" "}
+          </Button>{' '}
         </VStack>
       </ModalBody>
 
       <ModalFooter
-        justifyContent={"space-between"}
-        w={{ base: "80%", md: "62%" }}
+        justifyContent={'space-between'}
+        w={{ base: '80%', md: '62%' }}
       >
         <Button
-          variant={"outline"}
-          rounded="3xl"
-          color="zipo.black"
-          fontSize={"13px"}
+          variant={'outline'}
+          rounded='3xl'
+          color='zipo.black'
+          fontSize={'13px'}
           fontWeight={500}
           px={6}
           py={5}
           _focus={{
-            bg: "white",
-            color: "zipo.black",
-            borderColor: "zipo.black",
+            bg: 'white',
+            color: 'zipo.black',
+            borderColor: 'zipo.black',
           }}
-          borderColor={"zipo.black"}
+          borderColor={'zipo.black'}
           onClick={() => {
             setInitLinks(initialLinks);
             setLinkToEdit({});
@@ -356,7 +356,7 @@ const FirstStep = ({
         >
           Back
         </Button>
-        <Text fontSize={"13px"}>1 of 2 steps</Text>
+        <Text fontSize={'13px'}>1 of 2 steps</Text>
       </ModalFooter>
     </>
   );
@@ -393,10 +393,10 @@ const SecondStep = ({
 
   if (error) {
     toast({
-      id: "123",
-      title: "Failed",
+      id: '123',
+      title: 'Failed',
       description: error.message,
-      status: "error",
+      status: 'error',
       duration: 5000,
       isClosable: true,
     });
@@ -405,9 +405,9 @@ const SecondStep = ({
 
   if (data) {
     toast({
-      id: "123",
-      title: "Link Edited",
-      status: "success",
+      id: '123',
+      title: 'Link Edited',
+      status: 'success',
       duration: 3000,
       isClosable: true,
     });
@@ -420,10 +420,10 @@ const SecondStep = ({
   const handleCombineLink = () => {
     if (linkTitle.length === 0) {
       toast({
-        id: "26480",
-        title: "Title too short",
-        description: "",
-        status: "error",
+        id: '26480',
+        title: 'Title too short',
+        description: '',
+        status: 'error',
         duration: 3000,
         isClosable: true,
       });
@@ -431,10 +431,10 @@ const SecondStep = ({
     }
     if (description.length > 100) {
       toast({
-        id: "26481",
-        title: "Description must not exceed 100 characters",
-        description: "",
-        status: "error",
+        id: '26481',
+        title: 'Description must not exceed 100 characters',
+        description: '',
+        status: 'error',
         duration: 3000,
         isClosable: true,
       });
@@ -445,8 +445,8 @@ const SecondStep = ({
 
   return (
     <>
-      <ModalBody ref={finalRef} as={VStack} spacing={7} w="full">
-        <VStack w="full" alignItems={"flex-start"} spacing={3}>
+      <ModalBody ref={finalRef} as={VStack} spacing={7} w='full'>
+        <VStack w='full' alignItems={'flex-start'} spacing={3}>
           <DescriptionAndTitle
             description={description}
             setDescription={setDescription}
@@ -461,30 +461,30 @@ const SecondStep = ({
         </VStack>
       </ModalBody>
 
-      <ModalFooter justifyContent={"space-between"} w="full">
-        <VStack w="full">
-          <HStack w="full" justify="space-between">
+      <ModalFooter justifyContent={'space-between'} w='full'>
+        <VStack w='full'>
+          <HStack w='full' justify='space-between'>
             <Button
-              variant={"solid"}
-              rounded="3xl"
-              color="white"
-              bg="zipo.500"
-              fontSize={"13px"}
+              variant={'solid'}
+              rounded='3xl'
+              color='white'
+              bg='zipo.500'
+              fontSize={'13px'}
               fontWeight={500}
               px={6}
               py={5}
               _hover={{
-                bg: "zipo.400",
+                bg: 'zipo.400',
                 // color: 'zipo.black',
               }}
-              borderColor={"zipo.black"}
+              borderColor={'zipo.black'}
               onClick={() => {
                 reset();
                 onClose();
-                setLinkTitle("");
-                setDescription("");
+                setLinkTitle('');
+                setDescription('');
                 setInitLinks(initialLinks);
-                setCustomLink("zipo.me/");
+                setCustomLink('zipo.me/');
                 setLinkToEdit({});
                 setEditMode(false);
               }}
@@ -492,26 +492,26 @@ const SecondStep = ({
               Done
             </Button>
             <Button
-              variant={"outline"}
-              rounded="3xl"
-              color="zipo.black"
-              fontSize={"13px"}
+              variant={'outline'}
+              rounded='3xl'
+              color='zipo.black'
+              fontSize={'13px'}
               fontWeight={500}
               px={6}
               py={5}
               _focus={{
-                bg: "white",
-                color: "zipo.black",
-                borderColor: "zipo.black",
+                bg: 'white',
+                color: 'zipo.black',
+                borderColor: 'zipo.black',
               }}
-              borderColor={"zipo.black"}
-              onClick={() => setStep("step_1")}
+              borderColor={'zipo.black'}
+              onClick={() => setStep('step_1')}
               isDisabled={loading}
             >
               Back
             </Button>
           </HStack>
-          <Text fontSize={"13px"}>2 of 2 steps</Text>
+          <Text fontSize={'13px'}>2 of 2 steps</Text>
         </VStack>
       </ModalFooter>
     </>
@@ -529,17 +529,17 @@ const LinkCombined = ({
   const toast = useToast();
   return (
     <>
-      <Box pb={3} w="full">
+      <Box pb={3} w='full'>
         <VStack
-          w="full"
-          alignItems={"flex-start"}
-          maxH={"180px"}
-          overflowY="auto"
+          w='full'
+          alignItems={'flex-start'}
+          maxH={'180px'}
+          overflowY='auto'
           spacing={3}
         >
           {initLinks.map((link) => {
             return (
-              <HStack spacing={0} w="95%" key={link.id}>
+              <HStack spacing={0} w='95%' key={link.id}>
                 <SelectSocials
                   title={link.title}
                   id={link.id}
@@ -547,7 +547,7 @@ const LinkCombined = ({
                 />
                 <InputGroup>
                   <Input
-                    placeholder="Paste link here"
+                    placeholder='Paste link here'
                     {...inputProps}
                     value={link.url}
                     readOnly
@@ -558,19 +558,19 @@ const LinkCombined = ({
           })}
         </VStack>
       </Box>
-      <Box w="95%">
+      <Box w='95%'>
         <InputGroup>
           <Input
-            placeholder="zipo.me/CustomLink"
+            placeholder='zipo.me/CustomLink'
             readOnly
             value={customLink}
             {...inputProps2}
           />
-          <InputRightElement width="4.5rem">
+          <InputRightElement width='4.5rem'>
             <Button
-              variant={"text"}
-              size="sm"
-              color={"zipo.500"}
+              variant={'text'}
+              size='sm'
+              color={'zipo.500'}
               top={1.5}
               right={1}
               fontWeight={500}
@@ -584,14 +584,14 @@ const LinkCombined = ({
         </InputGroup>
 
         <HStack
-          flexWrap={"wrap"}
+          flexWrap={'wrap'}
           mt={4}
-          justifyContent={{ base: "center", md: "flex-end" }}
+          justifyContent={{ base: 'center', md: 'flex-end' }}
         >
           <HStack spacing={3}>
             <img
-              src="Share_Black.svg"
-              style={{ display: "inline" }}
+              src='Share_Black.svg'
+              style={{ display: 'inline' }}
               width={20}
             />
             <Text mr={2}>Click any icon to share. </Text>
@@ -600,29 +600,29 @@ const LinkCombined = ({
           <Box pt={{ base: 2, md: 0 }}>
             <WhatsappShareButton
               url={combinedLink}
-              children={<ShareIcon src="Whatsapp_Black.svg" />}
+              children={<ShareIcon src='Whatsapp_Black.svg' />}
             />
             <FacebookShareButton
               url={combinedLink}
-              children={<ShareIcon src="Facebook_Black.svg" />}
+              children={<ShareIcon src='Facebook_Black.svg' />}
             />
             <LinkedinShareButton
               url={combinedLink}
-              children={<ShareIcon src="Linkedin_Black.svg" />}
+              children={<ShareIcon src='Linkedin_Black.svg' />}
             />
             <TwitterShareButton
               url={combinedLink}
-              children={<ShareIcon src="Twitter_Black.svg" />}
+              children={<ShareIcon src='Twitter_Black.svg' />}
             />
             <img
               width={29}
               style={{
-                marginLeft: "5px",
-                display: "inline",
-                cursor: "pointer",
+                marginLeft: '5px',
+                display: 'inline',
+                cursor: 'pointer',
               }}
-              alt="share"
-              src="Copylink_Black.svg"
+              alt='share'
+              src='Copylink_Black.svg'
               onClick={() => {
                 handleLinkCopy(toast, combinedLink);
               }}
@@ -649,73 +649,69 @@ const DescriptionAndTitle = ({
 
   return (
     <>
-      <Box w="full">
-        <InputGroup w="95%" mb={3}>
+      <Box w='full'>
+        <InputGroup w='95%' mb={3}>
           <Input
-            placeholder="Link Title"
+            placeholder='Link Title'
             {...inputProps2}
             value={linkTitle}
             onChange={(e) => setLinkTitle(e.target.value)}
           />
         </InputGroup>
-        <Box position={"relative"} w="95%" mb={8}>
+        <Box position={'relative'} w='95%' mb={8}>
           <Textarea
             placeholder={`Description (${DESCRIPTION_MAX} characters max)`}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            borderColor="zipo.deep"
-            fontSize={"13px"}
-            borderRadius="2xl"
+            borderColor='zipo.deep'
+            fontSize={'13px'}
+            borderRadius='2xl'
             isInvalid={description.length > DESCRIPTION_MAX ? true : false}
-            ringColor={description.length > DESCRIPTION_MAX && "red.500"}
+            ringColor={description.length > DESCRIPTION_MAX && 'red.500'}
           />
           <Text
-            fontSize={"10px"}
+            fontSize={'10px'}
             fontWeight={600}
-            position="absolute"
+            position='absolute'
             bottom={-4}
             right={0}
             opacity={0.5}
-            color={description.length > DESCRIPTION_MAX && "red.500"}
+            color={description.length > DESCRIPTION_MAX && 'red.500'}
           >
             {description.length} / {DESCRIPTION_MAX}
           </Text>
         </Box>
 
-        <Box w="95%">
+        <Box w='95%'>
           <InputGroup>
             <Input
-              placeholder="zipo.me/CustomLink"
+              placeholder='zipo.me/CustomLink'
               readOnly
               isDisabled
-              value={"zipo.me/" + link.path}
+              value={'zipo.me/' + link.path}
               {...inputProps2}
             />
             <InputRightElement
-              children={<Image src="Link_Correct.svg" w="16px" />}
+              children={<Image src='Link_Correct.svg' w='16px' />}
             />
           </InputGroup>
         </Box>
       </Box>
 
       <Button
-        width="95%"
-        variant="solid"
-        bgColor={"zipo.500"}
-        fontSize="14px"
+        width='95%'
+        variant='solid'
+        bgColor={'zipo.500'}
+        fontSize='14px'
         fontWeight={500}
-        color={"white"}
-        rounded="3xl"
-        fontFamily={"montserrat"}
+        color={'white'}
+        rounded='3xl'
+        fontFamily={'montserrat'}
         h={12}
         _hover={{
           opacity: 0.9,
         }}
-        isDisabled={
-          loading ||
-          (link.combinedLink.description === description &&
-            link.combinedLink.title === linkTitle)
-        }
+        isDisabled={loading}
         isLoading={loading}
         onClick={() => handleCombineLink()}
       >
@@ -730,8 +726,8 @@ const ShareIcon = ({ src }) => {
     <img
       src={src}
       width={25}
-      style={{ marginLeft: "3px", display: "inline" }}
-      alt="share"
+      style={{ marginLeft: '3px', display: 'inline' }}
+      alt='share'
     />
   );
 };
@@ -742,9 +738,9 @@ const handleLinkCopy = (toast, link) => {
   if (!toast.isActive(link)) {
     toast({
       id: Math.random(),
-      title: "Link copied",
+      title: 'Link copied',
       description: link,
-      status: "success",
+      status: 'success',
       duration: 3000,
       isClosable: true,
     });
