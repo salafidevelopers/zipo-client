@@ -9,12 +9,12 @@ import {
   Button,
   Input,
   InputGroup,
-  InputRightElement,
   useToast,
 } from "@chakra-ui/react";
 import React from "react";
 
 import { GET_LINKS, EDIT_CUSTOM_LINK } from "./gql";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 const inputProps = {
   variant: "outline",
@@ -31,6 +31,7 @@ export default function CustomLinkEdit({
   link,
   setLinkToEdit,
   setEditMode,
+  deleteLink,
 }) {
   const [longUrl, setLongUrl] = React.useState(link.link);
   const toast = useToast();
@@ -81,7 +82,9 @@ export default function CustomLinkEdit({
       w={{ base: "90%" }}
       top={{ base: "4rem", md: "auto" }}
     >
-      <ModalHeader>Custom Link</ModalHeader>
+      <ModalHeader>
+        <p>Custom Link</p>
+      </ModalHeader>
       <ModalBody ref={finalRef} as={VStack} spacing={7} w="full">
         <InputGroup>
           <Input
@@ -141,7 +144,7 @@ export default function CustomLinkEdit({
         </>
       </ModalBody>
 
-      <ModalFooter justifyContent={"flex-start"}>
+      <ModalFooter justifyContent={"space-between"}>
         <Button
           variant={"primary"}
           rounded="3xl"
@@ -158,6 +161,23 @@ export default function CustomLinkEdit({
           }}
         >
           Done
+        </Button>
+        <Button
+          variant={"primary"}
+          bgColor={"red"}
+          rounded="3xl"
+          color="white"
+          fontSize={"13px"}
+          fontWeight={500}
+          px={6}
+          py={5}
+          onClick={() => {
+            deleteLink();
+            setEditMode(false);
+            onClose();
+          }}
+        >
+          <DeleteIcon /> Delete
         </Button>
       </ModalFooter>
     </ModalContent>

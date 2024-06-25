@@ -26,10 +26,12 @@ import CustomLink from "./CustomLink";
 import CreateLink from "./CreateLink";
 import PrivateRoute from "../PrivateRoute";
 import { GET_LINKS } from "./gql";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import CustomLinkEdit from "./CustomLinkEdit";
 import CombineLinkEdit from "./CombineLinkEdit";
 import CombineLink from "./CombineLink";
+import { LINK_DELETE } from "../gql";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 function Main() {
   const [editMode, setEditMode] = useState(false);
@@ -333,6 +335,39 @@ const LinkEditHandlerModal = ({
 }) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
+  const toast = useToast();
+  const [deleteLink, { data, loading, error, reset }] = useMutation(
+    LINK_DELETE,
+    {
+      variables: { linkDeleteId: link._id },
+      refetchQueries: [GET_LINKS],
+    }
+  );
+
+  if (error) {
+    toast({
+      id: "123",
+      title: "Failed",
+      description: error.message,
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+    });
+    reset();
+  }
+
+  if (data) {
+    toast({
+      id: "123",
+      title: "Link Edited",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+
+    reset();
+  }
+
   return (
     <>
       <Modal
@@ -354,6 +389,7 @@ const LinkEditHandlerModal = ({
             link={link}
             setLinkToEdit={setLinkToEdit}
             setEditMode={setEditMode}
+            deleteLink={deleteLink}
           />
         ) : (
           <CombineLinkEdit
@@ -363,6 +399,7 @@ const LinkEditHandlerModal = ({
             link={link}
             setLinkToEdit={setLinkToEdit}
             setEditMode={setEditMode}
+            deleteLink={deleteLink}
           />
         )}
       </Modal>

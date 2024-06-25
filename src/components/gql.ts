@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const SHORTEN_LINK = gql`
   mutation Link_shorten($alternators: [String!]!, $link: String!) {
@@ -12,7 +12,7 @@ export const SHORTEN_LINK = gql`
         alternators
         type
         link
-        
+
         id
       }
     }
@@ -37,6 +37,33 @@ export const GET_ORIGINAL_LINK = gql`
         title
       }
       id
+    }
+  }
+`;
+
+export const LINK_DELETE = gql`
+  mutation Link_delete($linkDeleteId: ID!) {
+    link_delete(id: $linkDeleteId) {
+      code
+      success
+      error
+      data {
+        _id
+        path
+        alternators
+        type
+        link
+        combinedLink {
+          links {
+            title
+            id
+            url
+          }
+          description
+          title
+        }
+        id
+      }
     }
   }
 `;

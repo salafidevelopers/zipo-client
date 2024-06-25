@@ -19,8 +19,8 @@ const config: DefaultSeoProps = {
     ],
   },
   twitter: {
-    handle: "@zipo",
-    site: "@site",
+    handle: "@pymastudio",
+    site: "https://prymastudio.com",
     cardType: "summary_large_image",
   },
 };
