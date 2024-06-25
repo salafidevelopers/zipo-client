@@ -60,6 +60,7 @@ const initialLinks = [
 
 export default function CombineLinkEdit({
   finalRef,
+  initialRef,
   onClose,
   link,
   setLinkToEdit,
@@ -144,6 +145,7 @@ export default function CombineLinkEdit({
             deleteLink();
             setLinkToEdit({});
             setEditMode(false);
+            onClose();
           }}
           color={"red"}
           cursor={"pointer"}
@@ -211,6 +213,7 @@ const SelectSocials = ({ title, id, handleLinkEdit }) => {
         {socialLinks.map((link) => {
           return (
             <MenuItem
+              key={link.title}
               icon={<Image src={link.src} w="20px" />}
               onClick={() => {
                 setSrc(getLinkSrc(link.title));

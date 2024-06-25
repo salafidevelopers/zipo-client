@@ -31,7 +31,6 @@ import CustomLinkEdit from "./CustomLinkEdit";
 import CombineLinkEdit from "./CombineLinkEdit";
 import CombineLink from "./CombineLink";
 import { LINK_DELETE } from "../gql";
-import { DeleteIcon } from "@chakra-ui/icons";
 
 function Main() {
   const [editMode, setEditMode] = useState(false);
@@ -346,7 +345,7 @@ const LinkEditHandlerModal = ({
 
   if (error) {
     toast({
-      id: "123",
+      id: "1235",
       title: "Failed",
       description: error.message,
       status: "error",
@@ -358,8 +357,7 @@ const LinkEditHandlerModal = ({
 
   if (data) {
     toast({
-      id: "123",
-      title: "Link Edited",
+      title: "Link deleted",
       status: "success",
       duration: 3000,
       isClosable: true,
@@ -367,6 +365,15 @@ const LinkEditHandlerModal = ({
 
     reset();
   }
+
+  React.useEffect(() => {
+    if (loading === false && data !== undefined) {
+      setLinkToEdit({});
+      setEditMode(false);
+      onClose();
+      console.log({ data, error, loading });
+    }
+  }, [loading, data, error]);
 
   return (
     <>
@@ -390,6 +397,8 @@ const LinkEditHandlerModal = ({
             setLinkToEdit={setLinkToEdit}
             setEditMode={setEditMode}
             deleteLink={deleteLink}
+            deleteLoading={loading}
+            deleteSuccess={data}
           />
         ) : (
           <CombineLinkEdit

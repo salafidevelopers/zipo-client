@@ -11,7 +11,7 @@ import {
   InputGroup,
   useToast,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { GET_LINKS, EDIT_CUSTOM_LINK } from "./gql";
 import { DeleteIcon } from "@chakra-ui/icons";
@@ -32,6 +32,8 @@ export default function CustomLinkEdit({
   setLinkToEdit,
   setEditMode,
   deleteLink,
+  deleteLoading,
+  deleteSuccess,
 }) {
   const [longUrl, setLongUrl] = React.useState(link.link);
   const toast = useToast();
@@ -163,21 +165,25 @@ export default function CustomLinkEdit({
           Done
         </Button>
         <Button
-          variant={"primary"}
+          variant={"secondary"}
           bgColor={"red"}
           rounded="3xl"
           color="white"
           fontSize={"13px"}
           fontWeight={500}
+          isLoading={deleteLoading}
+          disabled={deleteLoading}
           px={6}
           py={5}
+          gap={1}
           onClick={() => {
             deleteLink();
+            setLinkToEdit({});
             setEditMode(false);
             onClose();
           }}
         >
-          <DeleteIcon /> Delete
+          <DeleteIcon /> <span>Delete</span>
         </Button>
       </ModalFooter>
     </ModalContent>
