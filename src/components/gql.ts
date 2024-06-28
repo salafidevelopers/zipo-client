@@ -12,7 +12,6 @@ export const SHORTEN_LINK = gql`
         alternators
         type
         link
-
         id
       }
     }
