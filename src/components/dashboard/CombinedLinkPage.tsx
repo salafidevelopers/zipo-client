@@ -29,7 +29,7 @@ function CombinedLinkPage({ link }) {
         <Box mb={3}>
           <Image alt="zipo" src="Link_Blue.svg" width={100} height={100} />
         </Box>
-        <Heading fontWeight={400} textAlign={"center"}>
+        <Heading fontWeight={400} textAlign={"center"} mx={"auto"}>
           {content.title}
         </Heading>
         <Text fontSize={"13px"}>{content.description}</Text>
@@ -108,7 +108,7 @@ function CombinedLinkPage({ link }) {
           </VStack>
         </VStack>
       </VStack>
-      <Text fontSize="13px">
+      <Text fontSize="15px" py={3}>
         You can also customize and combine your links{" "}
         <Link
           href="/dashboard"
