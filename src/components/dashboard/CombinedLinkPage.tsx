@@ -22,9 +22,10 @@ function CombinedLinkPage({ link }) {
 
       <VStack
         spacing={2}
-        maxW={{ base: "100%", md: "500px" }}
+        maxW={{ base: "90%", md: "500px" }}
         pb={14}
         align={"center"}
+        px={4}
       >
         <Box mb={3}>
           <Image alt="zipo" src="Link_Blue.svg" width={100} height={100} />
